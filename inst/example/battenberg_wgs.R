@@ -3,6 +3,7 @@
 library(Battenberg)
 library(BiocIO)
 library(optparse)
+options(bitmapType='cairo')
 
 option_list = list(
   make_option(c("-t", "--tumourname"), type="character", default=NULL, help="Samplename of the tumour", metavar="character"),
@@ -107,6 +108,7 @@ CALC_SEG_BAF_OPTION = 1
 
 
 # Change to work directory and load the chromosome information
+if(!file.exists(RUN_DIR)) dir.create(RUN_DIR)
 setwd(RUN_DIR)
 
 battenberg(analysis=analysis,
