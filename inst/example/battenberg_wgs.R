@@ -1,4 +1,7 @@
+# R CMD BATCH '--no-restore-data --no-save --args -t OV4 -n OV4-D --nb /michorlab/mcdonald/cna/bamfiles/OV4-D.marked.sorted.recalibrated.bam --tb /michorlab/mcdonald/cna/bamfiles/OV4.marked.sorted.recalibrated.bam --sex female -o /michorlab/mcdonald/cna/battenberg_output/OV4/ --cpu 12' /michorlab/mcdonald/cna/extdata/battenberg/battenberg_wgs.R /michorlab/mcdonald/cna/battenberg_output/OV4/battenberg.Rout
+
 library(Battenberg)
+library(BiocIO)
 library(optparse)
 
 option_list = list(
@@ -47,16 +50,16 @@ USEBEAGLE = T
 
 # General static
 if (GENOMEBUILD=="hg19") {
-	impute_basedir = "/hps/research/gerstung/sdentro/reference/human/battenberg/"
-	IMPUTEINFOFILE = file.path(impute_basedir, "battenberg_impute_v3/impute_info.txt")
-	G1000ALLELESPREFIX = file.path(impute_basedir, "battenberg_1000genomesloci2012_v3/1000genomesAlleles2012_chr")
-	G1000LOCIPREFIX = file.path(impute_basedir, "battenberg_1000genomesloci2012_v3/1000genomesloci2012_chr")
-	GCCORRECTPREFIX = file.path(impute_basedir, "battenberg_wgs_gc_correction_1000g_v3_noNA/1000_genomes_GC_corr_chr_")
-	REPLICCORRECTPREFIX = file.path(impute_basedir, "battenberg_wgs_replic_correction_1000g_v3/1000_genomes_replication_timing_chr_")
+  impute_basedir = "/michorlab/mcdonald/cna/extdata/battenberg/"
+  IMPUTEINFOFILE = file.path(impute_basedir, "battenberg_impute_v3/impute_info.txt")
+  G1000ALLELESPREFIX = file.path(impute_basedir, "battenberg_1000genomesloci2012_v3/1000genomesAlleles2012_chr")
+  G1000LOCIPREFIX = file.path(impute_basedir, "battenberg_1000genomesloci2012_v3/1000genomesloci2012_chr")
+  GCCORRECTPREFIX = file.path(impute_basedir, "battenberg_wgs_gc_correction_1000g_v3_noNA/1000_genomes_GC_corr_chr_")
+  REPLICCORRECTPREFIX = file.path(impute_basedir, "battenberg_wgs_replic_correction_1000g_v3/1000_genomes_replication_timing_chr_")
 	
 	# WGS specific static
 	#PROBLEMLOCI = "/lustre/scratch117/casm/team219/sd11/reference/GenomeFiles/battenberg_probloci/probloci_270415.txt.gz"
-	PROBLEMLOCI = "/hps/research/gerstung/sdentro/reference/human/battenberg/battenberg_probloci/probloci_270415.txt.gz"
+	PROBLEMLOCI = "/michorlab/mcdonald/cna/extdata/battenberg/battenberg_probloci/probloci_270415.txt.gz"
 	GENOME_VERSION = "b37"
 	GENOMEBUILD = "hg19"
 	#BEAGLE_BASEDIR = "/nfs/users/nfs_s/sd11/scratch17_t219/reference/GenomeFiles/battenberg_beagle"
@@ -65,7 +68,7 @@ if (GENOMEBUILD=="hg19") {
 	BEAGLEREF.template = file.path(BEAGLE_BASEDIR, GENOME_VERSION, "chrCHROMNAME.1kg.phase3.v5a.b37.bref3")
 	BEAGLEPLINK.template = file.path(BEAGLE_BASEDIR, GENOME_VERSION, "plink.chrCHROMNAME.GRCh37.map")
 
-	CHROM_COORD_FILE = "/homes/sdentro/repo/battenberg/gcCorrect_chromosome_coordinates_hg19.txt"
+	CHROM_COORD_FILE = "/michorlab/mcdonald/cna/extdata/battenberg/gcCorrect_chromosome_coordinates_hg19.txt"
 
 } else if (GENOMEBUILD=="hg38") {
 	

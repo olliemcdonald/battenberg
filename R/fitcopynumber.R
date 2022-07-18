@@ -308,7 +308,7 @@ callSubclones = function(sample.name, baf.segmented.file, logr.file, rho.psi.fil
     breakpoints_pos = segment_breakpoints[segment_breakpoints$chromosome==chr,]
     breakpoints_pos = sort(unique(c(breakpoints_pos$start, breakpoints_pos$end) / 1000000))
 
-    png(filename = paste(output.figures.prefix, chr,".png",sep=""), width = 2000, height = 2000, res = 200)
+    png(filename = paste(output.figures.prefix, chr,".png",sep=""), width = 2000, height = 2000, res = 200, type="cairo")
     create.subclonal.cn.plot(chrom=chr,
                              chrom.position=pos/1000000,
                              LogRposke=LogRvals[LogRvals[,1]==chr,2],
@@ -774,7 +774,7 @@ plot.gw.subclonal.cn = function(subclones, BAFvals, rho, ploidy, goodness, outpu
   chr.segs = lapply(1:length(chr.names), function(ch) { which(BAFvals$Chromosome==chr.names[ch]) })
 
   # Plot subclonal copy number as mixtures of two states
-  png(filename = paste(output.gw.figures.prefix, "_average.png", sep=""), width = 2000, height = 500, res = 200)
+  png(filename = paste(output.gw.figures.prefix, "_average.png", sep=""), width = 2000, height = 500, res = 200, type="cairo")
   create.bb.plot.average(bafsegmented=BAFvals,
                             ploidy=ploidy,
                             rho=rho,
@@ -789,7 +789,7 @@ plot.gw.subclonal.cn = function(subclones, BAFvals, rho, ploidy, goodness, outpu
   dev.off()
 
   # Plot subclonal copy number as two separate states
-  png(filename = paste(output.gw.figures.prefix, "_subclones.png", sep=""), width = 2000, height = 500, res = 200)
+  png(filename = paste(output.gw.figures.prefix, "_subclones.png", sep=""), width = 2000, height = 500, res = 200, type="cairo")
   create.bb.plot.subclones(bafsegmented=BAFvals,
                              subclones=subclones,
                              ploidy=ploidy,

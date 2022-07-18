@@ -19,11 +19,16 @@ getAlleleCounts = function(bam.file, output.file, g1000.loci, min.base.qual=20, 
 
 
   # alleleCount >= v4.0.0 is sped up considerably on 1000G loci when run in dense-snp mode
+  # Added required-flag 0 so that paired-end is not required (default was 3)
   counter_version = system(paste(allelecounter.exe, "--version"), intern = T)
   if (as.integer(substr(x = counter_version, start = 1, stop = 1)) >= 4)
-    cmd = paste(cmd, "--dense-snps")
+    cmd = paste(cmd, "--dense-snps --required-flag 0")
 
   system(cmd, wait=T)
+
+  # stripped "chr" prefix just for consistency from this point forward
+  sed_cmd = paste("sed -i 's/chr//g'", output.file)
+  system(sed_cmd, wait=T)
 }
 
 

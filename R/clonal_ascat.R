@@ -1245,7 +1245,7 @@ find_centroid_of_global_minima <- function( d, ref_seg_matrix, ref_major, ref_mi
   
   # separated plotting from logic: create distanceplot here
   if (!is.na(distancepng)) {
-    png(filename = distancepng, width = 1000, height = 1000, res = 1000/7)
+    png(filename = distancepng, width = 1000, height = 1000, res = 1000/7, type="cairo")
   }
   clonal_findcentroid.plot(minimise, dist_choice, -d, psis, rhos, new_bounds)
   if (!is.na(distancepng)) { dev.off() }
@@ -1432,7 +1432,7 @@ runASCAT = function(lrr, baf, lrrsegmented, bafsegmented, chromosomes, dist_choi
   if (analysis=="paired"){	
   # separated plotting from logic: create distanceplot here
   if (!is.na(distancepng)) {
-    png(filename = distancepng, width = 1000, height = 1000, res = 1000/7)
+    png(filename = distancepng, width = 1000, height = 1000, res = 1000/7, type="cairo")
   }
   ASCAT::ascat.plotSunrise(-d, psi_opt1_plot, rho_opt1_plot,minimise)
   if (!is.na(distancepng)) { dev.off() }
@@ -1468,7 +1468,7 @@ runASCAT = function(lrr, baf, lrrsegmented, bafsegmented, chromosomes, dist_choi
 	
 	# separated plotting from logic: create nonrounded copy number profile plot here
 	if (!is.na(nonroundedprofilepng)) {
-	  png(filename = nonroundedprofilepng, width = 2000, height = 500, res = 200)
+	  png(filename = nonroundedprofilepng, width = 2000, height = 500, res = 200, type="cairo", type="cairo")
 	}
 	# clonal_runascat.plot3(rho_opt1, goodnessOfFit_opt1, ploidy_opt1, nAfull, nBfull, ch, lrr, bafsegmented)
 	ASCAT::ascat.plotNonRounded(ploidy = ploidy_opt1, rho = rho_opt1, goodnessOfFit = goodnessOfFit_opt1, nonaberrant = FALSE, nAfull = nAfull, nBfull = nBfull, bafsegmented = bafsegmented, ch = ch, lrr = lrr, chrs=chr.names)
@@ -1627,12 +1627,12 @@ run_clonal_ASCAT = function(lrr, baf, lrrsegmented, bafsegmented, chromosomes, s
 
 	
   	# Make plots
-  	if (!is.na(copynumberprofilespng)) { png(filename = copynumberprofilespng, width = 2000, height = 500, res = 200) }
+  	if (!is.na(copynumberprofilespng)) { png(filename = copynumberprofilespng, width = 2000, height = 500, res = 200, type="cairo") }
   	ASCAT::ascat.plotAscatProfile(n1all = nA, n2all = nB, heteroprobes = TRUE, ploidy = ploidy, rho = rho, goodnessOfFit = goodnessOfFit, nonaberrant = FALSE, ch = ch, lrr = lrr, bafsegmented = bafsegmented, chrs=chr.names)
   	if (!is.na(copynumberprofilespng)) { dev.off() }
       
   	# separated plotting from logic: create nonrounded copy number profile plot here
-  	if (!is.na(nonroundedprofilepng)) { png(filename = nonroundedprofilepng, width = 2000, height = 500, res = 200) }
+  	if (!is.na(nonroundedprofilepng)) { png(filename = nonroundedprofilepng, width = 2000, height = 500, res = 200, type="cairo") }
   	ASCAT::ascat.plotNonRounded(ploidy = ploidy, rho = rho, goodnessOfFit = goodnessOfFit, nonaberrant = FALSE, nAfull = nAfull, nBfull = nBfull, bafsegmented = bafsegmented, ch = ch, lrr = lrr, chrs=chr.names)
   	if (!is.na(nonroundedprofilepng)) { dev.off() }
   }
