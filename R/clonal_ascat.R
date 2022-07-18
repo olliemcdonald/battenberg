@@ -1468,7 +1468,7 @@ runASCAT = function(lrr, baf, lrrsegmented, bafsegmented, chromosomes, dist_choi
 	
 	# separated plotting from logic: create nonrounded copy number profile plot here
 	if (!is.na(nonroundedprofilepng)) {
-	  png(filename = nonroundedprofilepng, width = 2000, height = 500, res = 200, type="cairo", type="cairo")
+	  png(filename = nonroundedprofilepng, width = 2000, height = 500, res = 200, type="cairo")
 	}
 	# clonal_runascat.plot3(rho_opt1, goodnessOfFit_opt1, ploidy_opt1, nAfull, nBfull, ch, lrr, bafsegmented)
 	ASCAT::ascat.plotNonRounded(ploidy = ploidy_opt1, rho = rho_opt1, goodnessOfFit = goodnessOfFit_opt1, nonaberrant = FALSE, nAfull = nAfull, nBfull = nBfull, bafsegmented = bafsegmented, ch = ch, lrr = lrr, chrs=chr.names)
