@@ -1461,7 +1461,7 @@ runASCAT = function(lrr, baf, lrrsegmented, bafsegmented, chromosomes, dist_choi
 
 	# Create plot
 	if (!is.na(copynumberprofilespng)) {
-	  png(filename = copynumberprofilespng, width = 2000, height = 500, res = 200)
+	  png(filename = copynumberprofilespng, width = 2000, height = 500, res = 200, type="cairo")
 	}
 	ASCAT::ascat.plotAscatProfile(n1all = nA, n2all = nB, heteroprobes = TRUE, ploidy = ploidy_opt1, rho = rho_opt1, goodnessOfFit = goodnessOfFit_opt1, nonaberrant = FALSE, ch = ch, lrr = lrr, bafsegmented = bafsegmented, chrs=chr.names)
 	if (!is.na(copynumberprofilespng)) { dev.off() }
