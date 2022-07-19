@@ -158,7 +158,9 @@ concatenateAlleleCountFiles = function(inputStart, inputEnd, chr_names) {
 concatenateG1000SnpFiles = function(inputStart, inputEnd, chr_names) {
   data = list()
   for(chrom in chr_names) {
-    filename = paste(inputStart, chrom, inputEnd, sep="")
+    chrom_num=chrom
+    if(chrom == "X") chrom_num="23"
+    filename = paste(inputStart, chrom_num, inputEnd, sep="")
     # Only add files that exist and have data
     if(file.exists(filename) && file.info(filename)$size>0) {
       # infiles = c(infiles, filename)

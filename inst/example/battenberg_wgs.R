@@ -34,7 +34,7 @@ SKIP_PHASING = opt$skip_phasing
 NTHREADS = opt$cpu
 PRIOR_BREAKPOINTS_FILE = opt$bp
 
-analysis = "cell_line"
+analysis = "paired"
 
 ###############################################################################
 # 2018-11-01
@@ -44,10 +44,10 @@ analysis = "cell_line"
 
 JAVAJRE = "java"
 ALLELECOUNTER = "alleleCounter"
-IMPUTE_EXE = "impute2"
+IMPUTE_EXE = "/data/programs/impute2/2.3.2/impute2"
 
-GENOMEBUILD = "hg38"
-USEBEAGLE = T
+GENOMEBUILD = "hg19"
+USEBEAGLE = FALSE
 
 # General static
 if (GENOMEBUILD=="hg19") {
@@ -158,3 +158,4 @@ battenberg(analysis=analysis,
            prior_breakpoints_file=PRIOR_BREAKPOINTS_FILE,
 	   GENOMEBUILD=GENOMEBUILD,
 	   chrom_coord_file=CHROM_COORD_FILE)
+
